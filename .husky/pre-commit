@@ -1,0 +1,5 @@
+#!/bin/sh
+chmod ug+x .husky/*
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint

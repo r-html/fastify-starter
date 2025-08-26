@@ -1,0 +1,56 @@
+{
+  "name": "@rhtml/fastify-starter",
+  "scripts": {
+    "start": "npx env-cmd -f .env nodemon --exec \"npm run build && node --inspect ./deploy/dist/main.js  \"",
+    "build": "ENTRY_POINTS=./src/main.ts node ./build.mjs && npm run thread-stream:fix",
+    "thread-stream:fix": "cp -r node_modules/thread-stream/lib ./deploy/dist",
+    "lint": "eslint --max-warnings=0 ./src --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install",
+    "test": "jest",
+    "test:coverage": "npm run test -- --coverage"
+  },
+  "dependencies": {
+    "@abraham/reflection": "^0.13.0",
+    "@rhtml/di": "^0.0.135",
+    "fastify": "^5.3.2",
+    "@rhtml/fastify": "^0.0.30",
+    "@fastify/cors": "^11.1.0",
+    "@fastify/middie": "^9.0.3",
+    "pino": "8.19.0",
+    "pino-pretty": "11.0.0",
+    "@fastify/request-context": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.1.1",
+    "@types/node": "^22.10.5",
+    "@rhtml/schematics": "^0.0.135",
+    "esbuild": "0.21.4",
+    "esbuild-plugin-pino": "^2.2.0",
+    "esbuild-plugin-tsc": "^0.5.0",
+    "nodemon": "^3.1.0",
+    "dotenv": "^16.4.5",
+    "gts": "^5.3.0",
+    "jest": "^29.7.0",
+    "eslint": "8.57.0",
+    "env-cmd": "^11.0.0",
+    "husky": "^8.0.3",
+    "eslint-plugin-simple-import-sort": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=18 <=20.18",
+    "npm": ">=8.0 <=10.8"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "legacyWatch": true,
+    "ext": "js,ts",
+    "ignore": [
+      "**/tests/**",
+      "*.spec.ts"
+    ]
+  }
+}

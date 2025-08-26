@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmitOnError": false,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "paths": {
+      "~app/app.constants": [
+        "app/app.constants.ts"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@shared": [
+        "app/shared/index.ts"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@core": [
+        "app/core/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.json",
+  ],
+}

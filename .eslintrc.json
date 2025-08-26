@@ -1,0 +1,47 @@
+{
+  "extends": "./node_modules/gts/",
+  "rules": {
+    // Custom overrides for some of the inherited default rules, based on pour preferences
+    // Note: Allow "==" and "!=" comparisons for null and undefined values instead of enforcing "===" and "!==" checks.
+    // References:
+    // - https://google.github.io/styleguide/tsguide.html#equality-checks
+    // - https://eslint.org/docs/latest/rules/eqeqeq
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    // Note: Allow only whitelisted unpublished imports
+    // Note: Don't force semi-column line endings, although it's the suggested approach
+    "semi": "off",
+    // Note: Preserve spacing between brackets
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    // Note: Increase the max line-wrap limit
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreComments": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreTrailingComments": true,
+        "ignorePattern": "test\\(.*$"
+        // Alow test cases titles to be explicit and don't limit the amount of chars
+      }
+    ],
+    // Enforce consistent brace style for all control statements
+    "curly": [
+      "error",
+      "all"
+    ],
+    "simple-import-sort/imports": [
+      "error"
+    ]
+  },
+  "plugins": [
+    "simple-import-sort"
+  ]
+}
